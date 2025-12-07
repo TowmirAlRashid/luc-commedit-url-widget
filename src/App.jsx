@@ -8,6 +8,7 @@ function App() {
   const [entity, setEntity] = useState(null);
   const [entityId, setEntityId] = useState(null);
   const [variable, setVariable] = useState(null);
+  const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
           "URL_Public_Image_Folder"
         );
         setVariable(variableData?.Success?.Content);
+        setUrl(variableData?.Success?.Content);
       };
 
       fetchData();
@@ -79,8 +81,8 @@ function App() {
           <TextField
             label="URL Public Image Folder"
             fullWidth
-            defaultValue={variable}
-            onChange={(e) => setVariable(e.target.value)}
+            value={url ?? ""}
+            onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter the new URL here..."
             variant="outlined"
             sx={{ mt: 3 }}
