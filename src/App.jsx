@@ -46,7 +46,7 @@ function App() {
     var func_name = "change_variable_url";
     var req_data = {
       arguments: JSON.stringify({
-        variable: variable,
+        variable: url,
       }),
     };
     const functionResp = await ZOHO.CRM.FUNCTIONS.execute(func_name, req_data);
