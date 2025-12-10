@@ -43,14 +43,17 @@ function App() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    var func_name = "change_variable_url";
-    var req_data = {
-      arguments: JSON.stringify({
-        variable: url,
-      }),
+    var recordData = {
+      Modified_URL: url,
+      Page_Number: 1,
+      Job_Status: "Pending",
     };
-    const functionResp = await ZOHO.CRM.FUNCTIONS.execute(func_name, req_data);
-    if (functionResp?.details?.output === "success") {
+    const createRecordResp = await ZOHO.CRM.API.insertRecord({
+      Entity: "URL_Cronjob_Logs",
+      APIData: recordData,
+      Trigger: ["workflow"],
+    });
+    if (createRecordResp?.data?.[0]?.code === "SUCCESS") {
       ZOHO.CRM.UI.Popup.closeReload();
     }
   };
