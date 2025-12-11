@@ -79,7 +79,8 @@ function App() {
             color="error"
           >
             *** Please remember that, editing the url will update all the
-            records with the new edited URL.
+            records with the new edited URL. and that the New URL should end
+            with a "/" for example https://www.vanwijk.nl/
           </Typography>
 
           <TextField
