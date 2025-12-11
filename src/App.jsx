@@ -53,6 +53,7 @@ function App() {
       APIData: recordData,
       Trigger: ["workflow"],
     });
+    console.log(createRecordResp);
     if (createRecordResp?.data?.[0]?.code === "SUCCESS") {
       ZOHO.CRM.UI.Popup.closeReload();
     }
